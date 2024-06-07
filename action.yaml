@@ -1,0 +1,49 @@
+name: "Add team to repo"
+description: "Adds a teams with specified permissions levels to a repo"
+inputs:
+  # Auth params
+  pat:
+    description: "The PAT used to authenticate."
+    required: false
+  app_id:
+    description: "The GitHub App ID used to authenticate."
+    required: false
+  app_private_key:
+    description: "The GitHub App private key used to authenticate."
+    required: false
+  app_installation_id:
+    description: "The GitHub App installation id used to authenticate."
+    required: false
+  api_url:
+    description: "GitHub API url. Change this if using GitHub Enterprise Server."
+    required: false
+    default: "https://api.github.com"
+
+  # Dest repo params
+  org:
+    description: "The organization with the team and the repo."
+    required: true
+  repo:
+    description: "The name of the repo to add the team to"
+    required: true
+
+  # Repo template params
+  admin_teams:
+    description: 'Input teams to be added as admins. Expected form is a string formatted like this: "<GitHub_Team_1_Name>[:<Entra_Group_2_Name>],<GGitHub_Team_2_Name>..."'
+    required: false
+  maintain_teams:
+    description: "Input teams to be added as maintainers."
+    required: false
+  write_teams:
+    description: "Input teams to be added as writers"
+    required: false
+  triage_teams:
+    description: "Input teams to be added as triagers"
+    required: false
+  read_teams:
+    description: "Input teams to be added as readers"
+    required: false
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
