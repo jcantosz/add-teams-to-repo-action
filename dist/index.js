@@ -42424,7 +42424,7 @@ async function main() {
   const teamsArray = teamsToArray(inputs.teams); // [{permissions: "", github_team: "", idp_group: ""}, ...]
 
   // Can add checks for both team and repo first but lets just let it fail
-  await addTeamsToRepo(auth.octokit, repo, teamsArray);
+  await addTeamsToRepo(auth.octokit, inputs.repo, teamsArray);
 }
 
 // Only run main if called directly
