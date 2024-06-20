@@ -42412,7 +42412,7 @@ async function addTeamsToRepo(octokit, repo, teams) {
   for (const team of teams) {
     core.info(`Adding team ${team.github_team} to repo`);
     team.teamSlug = teamToTeamSlug(team.github_team);
-    core.debug(`Team properties: ${team}`);
+    core.debug(`Team properties: ${JSON.stringify(team)}`);
     await addTeamToRepo(octokit, repo, team);
   }
 }
