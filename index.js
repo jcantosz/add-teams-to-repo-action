@@ -8,7 +8,6 @@ function teamToArray(type, teams) {
     core.debug(`processing team map: ${team}`);
     const components = team.split(":");
     const idpGroup = components.length > 1 ? components.pop() : ""; // if there are multiple elements, get the last one, otherwise get nothing
-    console.log(components);
     groupArray.push({
       permissions: type,
       github_team: components.join(":") || "", // Join remaining elements with ":" in case that was removed
@@ -60,8 +59,10 @@ async function addTeamToRepo(octokit, repo, team) {
 
 async function addTeamsToRepo(octokit, repo, teams) {
   for (const team of teams) {
-    team.teamSlug = teamToTeamSlug(team);
-    await addTeamToRepo(octokit, repo, teamSlug);
+    core.info(`Adding team ${team.github_team} to repo`);
+    team.teamSlug = teamToTeamSlug(team.github_team);
+    core.debug(`Team properties: ${team}`);
+    await addTeamToRepo(octokit, repo, team);
   }
 }
 
