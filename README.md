@@ -6,6 +6,11 @@ Action that adds teams with specified permissions levels to a repository
 
 `ncc build index.js`
 
+## GitHub App permissions
+
+- Repository > Administration (Write), Metadata (Read)
+- Organization > Members (Read)
+
 ## Example workflow
 
 Workflow to add teams to a repo
