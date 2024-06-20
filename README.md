@@ -13,13 +13,13 @@ Workflow to add teams to a repo
 ```yaml create-repo.yaml
 name: Add teams to a repo
 on:
-  issue:
+  issues:
     types:
       - opened
 jobs:
   AddGroups:
     runs-on: ubuntu-latest
-    jobs:
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
